@@ -1,18 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown";
 
 function HorizontalCards({ data }) {
   return (
-    <div className="w-full h-[45%] p-5=">
-      <div className="mb-5">
-        <h1 className="text-2xl font-semibold text-zinc-400">Trending</h1>
-        <div className="dropdown"></div>
-      </div>
+    <div className="w-full h-[45%] p-5">
       <div className="w-full h-[100%] flex overflow-y-hidden">
         {data.map((data, i) => (
           <div
             key={i}
-            className="min-w-[15%] h-full mr-5 mb-5 bg-zinc-900  rounded-md"
+            className="min-w-[15%] overflow-hidden h-full mr-5 mb-5 bg-zinc-900  rounded-md"
           >
             <div className="w-full h-[50%]">
               <img
