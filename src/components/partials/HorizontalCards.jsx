@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function HorizontalCards({ data }) {
   return (
-    <div className="w-full h-[45%] p-10">
+    <div className="w-full h-[45%] p-5=">
       <div className="mb-5">
         <h1 className="text-2xl font-semibold text-zinc-400">Trending</h1>
         <div className="dropdown"></div>
