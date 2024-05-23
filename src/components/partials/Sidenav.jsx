@@ -22,7 +22,10 @@ function Sidenav() {
         <nav>
           <h1 className="text-2xl text-white mb-5">New Feeds</h1>
           <div className="links flex flex-col gap-5">
-            <Link className="text-xl gap-3 flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
+            <Link
+              to={"/trending"}
+              className="text-xl gap-3 flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3"
+            >
               <AiFillFire /> Trending
             </Link>
             <Link className="text-xl gap-3  flex items-center text-zinc-300  hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
