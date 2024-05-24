@@ -8,20 +8,18 @@ import Cards from "./partials/Cards";
 import Loading from "./Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function Trending() {
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
-  const [trending, setTrending] = useState([]);
+function Popular() {
+  document.title = "Movies-X | Popular";
+  const [category, setCategory] = useState("movie");
+  const [popular, setPopular] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const getTrending = async () => {
+  const getPopular = async () => {
     try {
-      const { data } = await axios.get(
-        `/trending/${category}/${duration}?page=${page}`
-      );
+      const { data } = await axios.get(`${category}/popular?page=${page}`);
       if (data.results.length > 0) {
-        setTrending((prestate) => [...prestate, ...data.results]);
+        setPopular((prestate) => [...prestate, ...data.results]);
         setPage(page + 1);
       } else {
         setHasMore(false);
@@ -32,23 +30,21 @@ function Trending() {
   };
 
   const refreshHandler = async function () {
-    if (trending.length === 0) {
-      getTrending();
+    if (popular.length === 0) {
+      getPopular();
     } else {
       setPage(1);
-      setTrending([]);
-      getTrending();
+      setPopular([]);
+      getPopular();
     }
   };
   // console.log(trending);
   useEffect(() => {
     refreshHandler();
-  }, [category, duration]);
-
-  document.title = "Movies-X | Trending";
+  }, [category]);
 
   const navigate = useNavigate();
-  return trending.length > 0 ? (
+  return popular.length > 0 ? (
     <div className="w-screen h-screen">
       <div className="w-full px-[5%] flex items-center justify-between">
         <h1 className="text-4xl w-[10%] text-zinc-400 font-semibold flex items-center">
@@ -58,31 +54,26 @@ function Trending() {
           >
             <IoArrowBack />
           </span>
-          Trending
+          Popular
         </h1>
         <div className="flex w-[80%]  items-center  justify-between">
           <Topnav />
           <Dropdown
             title="category"
-            options={["movie", "tv", "all"]}
+            options={["movie", "tv"]}
             func={(e) => setCategory(e.target.value)}
           />
           <div className="w-[2%]"></div>
-          <Dropdown
-            title="Duration"
-            options={["week", "day"]}
-            func={(e) => setDuration(e.target.value)}
-          />
         </div>
       </div>
 
       <InfiniteScroll
-        dataLength={trending.length}
+        dataLength={popular.length}
         loader={<h4>Loading...</h4>}
-        next={getTrending}
+        next={getPopular}
         hasMore={hasMore}
       >
-        <Cards data={trending} title={category} />
+        <Cards data={popular} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -90,4 +81,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default Popular;

@@ -20,24 +20,27 @@ function Header({ data }) {
       </h1>
       <p className="text-zinc-100 w-[70%]">
         {data.overview.slice(0, 200)}...{" "}
-        <Link className="text-blue-700">more</Link>
+        <Link className="text-blue-600">more</Link>
         {""}
       </p>
-      <p className="text-white flex items-center  uppercase gap-5 mt-5 text-xl">
-        {data.release_date && (
-          <>
-            <span className="text-purple-700 text-xl font-semibold">
-              <HiSpeakerphone />
-            </span>
-            {data.release_date}
-          </>
-        )}
+      <div>
+        {" "}
+        <p className="text-white flex items-center  uppercase gap-5 mt-5 text-xl">
+          {data.release_date && (
+            <>
+              <span className="text-purple-700 text-xl font-semibold">
+                <HiSpeakerphone />
+              </span>
+              {data.release_date}
+            </>
+          )}
 
-        <span className="text-purple-700 text-xl font-semibold">
-          <FaTape />
-        </span>
-        {data.media_type}
-      </p>
+          <span className="text-purple-700 text-xl font-semibold">
+            <FaTape />
+          </span>
+          {data.media_type}
+        </p>
+      </div>
 
       <Link
         className="bg-purple-700 hover:bg-purple-600 duration-200  p-3 mt-3 text-xl font-semibold text-zinc-100 rounded-md "

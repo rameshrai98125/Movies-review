@@ -8,6 +8,7 @@ import Dropdown from "./partials/Dropdown";
 import Loading from "./Loading";
 
 function Home() {
+  document.title = "Movie-X | home";
   const [wallpaper, setWallpaper] = useState();
   const [trending, setTredning] = useState(null);
   const [category, setCategory] = useState("all");

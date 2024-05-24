@@ -28,13 +28,22 @@ function Sidenav() {
             >
               <AiFillFire /> Trending
             </Link>
-            <Link className="text-xl gap-3  flex items-center text-zinc-300  hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
+            <Link
+              to={"/popular"}
+              className="text-xl gap-3  flex items-center text-zinc-300  hover:bg-purple-600 rounded-lg px-3 duration-300 py-3"
+            >
               <RiMagicFill /> popular
             </Link>
-            <Link className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
+            <Link
+              to={"movie"}
+              className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3"
+            >
               <RiMovie2Fill /> Movies
             </Link>
-            <Link className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
+            <Link
+              to={"tvshow"}
+              className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3"
+            >
               <BiTv /> Tv shows
             </Link>
             <Link className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">

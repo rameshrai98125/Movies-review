@@ -8,20 +8,18 @@ import Cards from "./partials/Cards";
 import Loading from "./Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function Trending() {
-  const [category, setCategory] = useState("all");
-  const [duration, setDuration] = useState("day");
-  const [trending, setTrending] = useState([]);
+function TvShow() {
+  document.title = "Movies-X | TV shows";
+  const [category, setCategory] = useState("airing_today");
+  const [tv, setTv] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const getTrending = async () => {
+  const getTvShow = async () => {
     try {
-      const { data } = await axios.get(
-        `/trending/${category}/${duration}?page=${page}`
-      );
+      const { data } = await axios.get(`/tv/${category}?page=${page}`);
       if (data.results.length > 0) {
-        setTrending((prestate) => [...prestate, ...data.results]);
+        setTv((prestate) => [...prestate, ...data.results]);
         setPage(page + 1);
       } else {
         setHasMore(false);
@@ -32,57 +30,50 @@ function Trending() {
   };
 
   const refreshHandler = async function () {
-    if (trending.length === 0) {
-      getTrending();
+    if (tv.length === 0) {
+      getTvShow();
     } else {
       setPage(1);
-      setTrending([]);
-      getTrending();
+      setTv([]);
+      getTvShow();
     }
   };
   // console.log(trending);
   useEffect(() => {
     refreshHandler();
-  }, [category, duration]);
-
-  document.title = "Movies-X | Trending";
+  }, [category]);
 
   const navigate = useNavigate();
-  return trending.length > 0 ? (
+  return tv.length > 0 ? (
     <div className="w-screen h-screen">
       <div className="w-full px-[5%] flex items-center justify-between">
-        <h1 className="text-4xl w-[10%] text-zinc-400 font-semibold flex items-center">
+        <h1 className="text-3xl w-[10%] text-zinc-400 font-semibold flex items-center">
           <span
             className="px-2 py-2 cursor-pointer rounded-full hover:bg-zinc-600 duration-300"
             onClick={() => navigate(-1)}
           >
             <IoArrowBack />
           </span>
-          Trending
+          TV <small className="text-sm ml-3">({category})</small>
         </h1>
         <div className="flex w-[80%]  items-center  justify-between">
           <Topnav />
           <Dropdown
             title="category"
-            options={["movie", "tv", "all"]}
+            options={["airing_today", "on_the_air", "popular", "top_rated"]}
             func={(e) => setCategory(e.target.value)}
           />
           <div className="w-[2%]"></div>
-          <Dropdown
-            title="Duration"
-            options={["week", "day"]}
-            func={(e) => setDuration(e.target.value)}
-          />
         </div>
       </div>
 
       <InfiniteScroll
-        dataLength={trending.length}
+        dataLength={tv.length}
         loader={<h4>Loading...</h4>}
-        next={getTrending}
+        next={setTv}
         hasMore={hasMore}
       >
-        <Cards data={trending} title={category} />
+        <Cards data={tv} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -90,4 +81,4 @@ function Trending() {
   );
 }
 
-export default Trending;
+export default TvShow;
