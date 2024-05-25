@@ -46,7 +46,10 @@ function Sidenav() {
             >
               <BiTv /> Tv shows
             </Link>
-            <Link className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
+            <Link
+              to={"/people"}
+              className="text-xl gap-3  flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3"
+            >
               <FaPeopleGroup /> people
             </Link>
           </div>

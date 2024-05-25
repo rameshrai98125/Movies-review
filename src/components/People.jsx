@@ -8,18 +8,18 @@ import Cards from "./partials/Cards";
 import Loading from "./Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-function TvShow() {
-  document.title = "Movies-X | TV shows";
-  const [category, setCategory] = useState("airing_today");
-  const [tv, setTv] = useState([]);
+function People() {
+  document.title = "Movies-X | People";
+  const [category, setCategory] = useState("popular");
+  const [person, setPerson] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const getTvShow = async () => {
+  const getPerson = async () => {
     try {
-      const { data } = await axios.get(`/tv/${category}?page=${page}`);
+      const { data } = await axios.get(`/person/${category}?page=${page}`);
       if (data.results.length > 0) {
-        setTv((prestate) => [...prestate, ...data.results]);
+        setPerson((prestate) => [...prestate, ...data.results]);
         setPage(page + 1);
       } else {
         setHasMore(false);
@@ -30,12 +30,12 @@ function TvShow() {
   };
 
   const refreshHandler = async function () {
-    if (tv.length === 0) {
-      getTvShow();
+    if (person.length === 0) {
+      getPerson();
     } else {
       setPage(1);
-      setTv([]);
-      getTvShow();
+      setPerson([]);
+      getPerson();
     }
   };
   // console.log(trending);
@@ -44,7 +44,7 @@ function TvShow() {
   }, [category]);
 
   const navigate = useNavigate();
-  return tv.length > 0 ? (
+  return person.length > 0 ? (
     <div className="w-screen h-screen">
       <div className="w-full px-[5%] flex items-center justify-between">
         <h1 className="text-3xl w-[10%] text-zinc-400 font-semibold flex items-center">
@@ -54,26 +54,22 @@ function TvShow() {
           >
             <IoArrowBack />
           </span>
-          TV <small className="text-sm ml-3">({category})</small>
+          person <small className="text-sm ml-3">({category})</small>
         </h1>
         <div className="flex w-[80%]  items-center  justify-between">
           <Topnav />
-          <Dropdown
-            title="category"
-            options={["airing_today", "on_the_air", "popular", "top_rated"]}
-            func={(e) => setCategory(e.target.value)}
-          />
+
           <div className="w-[2%]"></div>
         </div>
       </div>
 
       <InfiniteScroll
-        dataLength={tv.length}
+        dataLength={person.length}
         loader={<h4>Loading...</h4>}
-        next={getTvShow}
+        next={getPerson}
         hasMore={hasMore}
       >
-        <Cards data={tv} title={category} />
+        <Cards data={person} title={category} />
       </InfiniteScroll>
     </div>
   ) : (
@@ -81,4 +77,4 @@ function TvShow() {
   );
 }
 
-export default TvShow;
+export default People;

@@ -70,7 +70,7 @@ function Movie() {
       <InfiniteScroll
         dataLength={movie.length}
         loader={<h4>Loading...</h4>}
-        next={setMovie}
+        next={getMovie}
         hasMore={hasMore}
       >
         <Cards data={movie} title={category} />
