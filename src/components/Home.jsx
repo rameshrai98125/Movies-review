@@ -42,13 +42,13 @@ function Home() {
   return wallpaper && trending ? (
     <>
       <Sidenav />
-      <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
+      <div className="w-[80%] min-h-full overflow-auto overflow-x-hidden">
         <Topnav />
         <Header data={wallpaper} />
         {/* dropdown  */}
         <div className="mb-5 flex justify-between items-center p-5">
           <h1 className="text-2xl font-semibold text-zinc-400">Trending</h1>
-          <div className=" mt-5">
+          <div className="mt-5">
             <Dropdown
               title="filter"
               options={["tv", "movie", "all"]}

@@ -1,16 +1,17 @@
 import React from "react";
-import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
 
 function HorizontalCards({ data }) {
   return (
-    <div className="w-full h-[45%] p-5">
-      <div className="w-full h-[100%] flex overflow-y-hidden">
+    <div className="w-full h-[50%] p-5">
+      <div className="w-full h-[100%] flex  overflow-y-hidden">
         {data.map((data, i) => (
-          <div
+          <Link
+            to={`/${data.media_type || title}/details/${data.id}`}
             key={i}
-            className="min-w-[15%] overflow-hidden h-full mr-5 mb-5 bg-zinc-900  rounded-md"
+            className="min-w-[15%] overflow-hidden  h-[40vh] mr-5 mb-5 bg-zinc-900  rounded-md"
           >
-            <div className="w-full h-[50%]">
+            <div className="w-full overflow-hidden h-[50%]">
               <img
                 className="w-full h-full object-cover"
                 src={`https://image.tmdb.org/t/p/original/${
@@ -19,7 +20,7 @@ function HorizontalCards({ data }) {
                 alt=""
               />
             </div>
-            <div className="p-2 h-[55%]">
+            <div className="p-2 overflow-y-hidden h-[55%] ">
               <h1 className="text-xl mt-3 font-semibold text-zinc-100 ">
                 {data.title ||
                   data.name ||
@@ -31,7 +32,7 @@ function HorizontalCards({ data }) {
                 <span className="text-zinc-300">more</span>
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

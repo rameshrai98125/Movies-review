@@ -69,7 +69,7 @@ function People() {
         next={getPerson}
         hasMore={hasMore}
       >
-        <Cards data={person} title={category} />
+        <Cards data={person} title={"person"} />
       </InfiniteScroll>
     </div>
   ) : (

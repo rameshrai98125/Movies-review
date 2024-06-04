@@ -22,7 +22,7 @@ function Topnav() {
     getSearch();
   }, [query]);
   return (
-    <div className="w-full h-[10vh] relative flex justify-start pl-[20%] items-center">
+    <div className="w-full h-[10vh] z-20 relative flex justify-start pl-[20%] items-center">
       <span className="text-zinc-200 text-3xl">
         <FaSearch />
       </span>
@@ -46,6 +46,7 @@ function Topnav() {
       <div className="w-[50%] max-h-[50vh] bg-zinc-500 absolute top-[100%] left-[20%] overflow-auto">
         {searches.map((s, i) => (
           <Link
+            to={`/${s.media_type}/details/${s.id}`}
             key={i}
             className="flex  text-zinc-100 duration-300 hover:bg-zinc-100 hover:text-zinc-800 items-center justify-around gap-10 p-5  border-b-2 border-zinc-700"
           >
