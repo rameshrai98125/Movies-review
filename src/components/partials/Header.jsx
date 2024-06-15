@@ -13,7 +13,7 @@ function Header({ data }) {
         backgroundPosition: "top",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-full h-[50vh] flex flex-col justify-end items-start px-20 py-10"
+      className="w-full h-[50vh] flex flex-col justify-end items-start md:px-20 px-2 py-10"
     >
       <h1 className=" w-[70%] text-5xl font-black text-zinc-100">
         {data.title || data.name || data.original_name || data.original_title}
@@ -49,7 +49,7 @@ function Header({ data }) {
 
       <Link
         className="bg-purple-700 hover:bg-purple-600 duration-200  p-3 mt-3 text-xl font-semibold text-zinc-100 rounded-md "
-        to={""}
+        to={`/${data.media_type}/details/${data.id}/trailer`}
       >
         Watch Trailer
       </Link>

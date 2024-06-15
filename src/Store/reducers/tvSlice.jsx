@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const tvSlice = createSlice({
-  name: "movies",
+  name: "tv",
   initialState,
   reducers: {
     loadTv: (state, action) => {

@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asynloadmovie, removemovie } from "../Store/actions/movieAction";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { FcWikipedia } from "react-icons/fc";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
@@ -35,7 +41,7 @@ function MoviesDetails() {
         backgroundPosition: "top",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen min-h-[150vh] overflow-y-hidden px-[10%]"
+      className="w-screen relative min-h-[150vh] overflow-y-hidden px-[10%]"
     >
       <nav className="w-full h-[10vh] items-center flex gap-10 text-2xl text-zinc-200">
         <span
@@ -171,11 +177,14 @@ function MoviesDetails() {
       <h1 className="text-3xl font-bold text-white">
         Recommendations & Similar
       </h1>
+
       <HorizontalCards
         data={
           info.recommendations.length > 0 ? info.recommendations : info.similar
         }
       />
+
+      <Outlet />
     </div>
   ) : (
     <Loading />

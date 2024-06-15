@@ -22,7 +22,7 @@ function Topnav() {
     getSearch();
   }, [query]);
   return (
-    <div className="w-full h-[10vh] z-20 relative flex justify-start pl-[20%] items-center">
+    <div className="w-full  hidden h-[10vh] z-20 relative md:flex justify-start pl-[20%] items-center">
       <span className="text-zinc-200 text-3xl">
         <FaSearch />
       </span>

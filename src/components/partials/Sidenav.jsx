@@ -13,7 +13,7 @@ import { MdOutlinePermContactCalendar } from "react-icons/md";
 function Sidenav() {
   return (
     <>
-      <div className="w-[20%] h-full border-r-[2px] border-zinc-700  p-10 ">
+      <div className="w-[20%] hidden md:block h-full border-r-[2px] border-zinc-700  p-10 ">
         <h1 className="text-2xl font-semibold text-purple-600 flex items-center gap-5 ">
           <FaTv />
           <span className="text-white">Movies-X</span>

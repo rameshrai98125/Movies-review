@@ -10,8 +10,13 @@ import People from "./components/People";
 import MoviesDetails from "./components/MoviesDetails";
 import PersonDetails from "./components/PersonDetails";
 import TvDetails from "./components/TvDetails";
+import Trailer from "./components/partials/Trailer";
+import NotFound from "./components/NotFound";
 
 function App() {
+  setTimeout((e) => {
+    alert("Please open the website on Desktop");
+  });
   return (
     <div className="w-screen h-screen bg-zinc-800 flex">
       <Routes>
@@ -19,13 +24,18 @@ function App() {
         <Route path="/trending" element={<Trending />} />
         <Route path="/popular" element={<Popular />} />
         <Route path="/movie" element={<Movie />} />
-        <Route path="/movie/details/:id" element={<MoviesDetails />} />
+        <Route path="/movie/details/:id" element={<MoviesDetails />}>
+          <Route path="/movie/details/:id/trailer" element={<Trailer />} />
+        </Route>
 
         <Route path="/tvshow" element={<TvShow />} />
-        <Route path="/tvshow/details/:id" element={<TvDetails />} />
+        <Route path="/tv/details/:id" element={<TvDetails />}>
+          <Route path="/tv/details/:id/trailer" element={<Trailer />} />
+        </Route>
 
         <Route path="/people" element={<People />} />
-        <Route path="/people/details/:id" element={<PersonDetails />} />
+        <Route path="/person/details/:id" element={<PersonDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
