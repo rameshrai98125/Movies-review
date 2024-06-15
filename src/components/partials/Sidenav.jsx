@@ -55,7 +55,7 @@ function Sidenav() {
           </div>
         </nav>
         <div className="w-full h-[1.5px] bg-zinc-700 my-3"></div>
-        <nav>
+        {/* <nav>
           <h1 className="text-lg text-white mb-3">Website Information</h1>
           <div className="links flex flex-col gap-5">
             <Link className="text-xl gap-3 flex items-center text-zinc-300 hover:bg-purple-600 rounded-lg px-3 duration-300 py-3">
@@ -65,7 +65,7 @@ function Sidenav() {
               <MdOutlinePermContactCalendar /> Contact
             </Link>{" "}
           </div>
-        </nav>
+        </nav> */}
       </div>
     </>
   );
