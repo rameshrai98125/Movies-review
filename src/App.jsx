@@ -14,9 +14,6 @@ import Trailer from "./components/partials/Trailer";
 import NotFound from "./components/NotFound";
 
 function App() {
-  setTimeout((e) => {
-    alert("Please open the website on Desktop");
-  });
   return (
     <div className="w-screen h-screen bg-zinc-800 flex">
       <Routes>
